@@ -350,13 +350,12 @@ namespace WalkerSelbeeProgram7 {
 
 			}
 			EndHand();
-		
 		}
 		
 		private: System::Void btnNewGame_Click(System::Object^ sender, System::EventArgs^ e) {
 			game.ClearHands();
-			txtP1->Text->Empty;
-			txtDealer->Text->Empty;
+			txtP1->Text= String::Empty;
+			txtDealer->Text = String::Empty;
 			txtStatus->Text = "Place your bet.";
 			
 			lblBet->Visible = true;
@@ -365,12 +364,12 @@ namespace WalkerSelbeeProgram7 {
 			btnHit->Visible = false;
 			btnStand->Visible = false;
 			btnNewGame->Visible = false;
+			txtBet->Focus();
 		}
 
 		private: System::Void menuRules_Click(System::Object^ sender, System::EventArgs^ e) {
 			MessageBox::Show(GetRules(), "Rules");
 		}
-
 
 
 		// -=>-=>-=> HELPERS <=-<=-<=-
