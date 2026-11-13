@@ -105,13 +105,13 @@ namespace WalkerSelbeeProgram7 {
 			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { menuRules });
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
-			this->menuStrip1->Size = System::Drawing::Size(566, 27);
+			this->menuStrip1->Size = System::Drawing::Size(533, 27);
 			this->menuStrip1->TabIndex = 0;
 			this->menuStrip1->Text = L"Rules";
 			// 
 			// txtBet
 			// 
-			this->txtBet->Location = System::Drawing::Point(90, 480);
+			this->txtBet->Location = System::Drawing::Point(90, 417);
 			this->txtBet->Name = L"txtBet";
 			this->txtBet->Size = System::Drawing::Size(100, 20);
 			this->txtBet->TabIndex = 1;
@@ -121,7 +121,7 @@ namespace WalkerSelbeeProgram7 {
 			this->lblBet->AutoSize = true;
 			this->lblBet->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lblBet->Location = System::Drawing::Point(18, 476);
+			this->lblBet->Location = System::Drawing::Point(18, 413);
 			this->lblBet->Name = L"lblBet";
 			this->lblBet->Size = System::Drawing::Size(66, 24);
 			this->lblBet->TabIndex = 2;
@@ -129,7 +129,7 @@ namespace WalkerSelbeeProgram7 {
 			// 
 			// btnBet
 			// 
-			this->btnBet->Location = System::Drawing::Point(196, 478);
+			this->btnBet->Location = System::Drawing::Point(196, 415);
 			this->btnBet->Name = L"btnBet";
 			this->btnBet->Size = System::Drawing::Size(75, 23);
 			this->btnBet->TabIndex = 3;
@@ -139,7 +139,7 @@ namespace WalkerSelbeeProgram7 {
 			// 
 			// btnNewGame
 			// 
-			this->btnNewGame->Location = System::Drawing::Point(479, 478);
+			this->btnNewGame->Location = System::Drawing::Point(442, 424);
 			this->btnNewGame->Name = L"btnNewGame";
 			this->btnNewGame->Size = System::Drawing::Size(75, 23);
 			this->btnNewGame->TabIndex = 4;
@@ -218,7 +218,7 @@ namespace WalkerSelbeeProgram7 {
 			this->txtHeader->Multiline = true;
 			this->txtHeader->Name = L"txtHeader";
 			this->txtHeader->ReadOnly = true;
-			this->txtHeader->Size = System::Drawing::Size(501, 83);
+			this->txtHeader->Size = System::Drawing::Size(495, 83);
 			this->txtHeader->TabIndex = 11;
 			// 
 			// btnHit
@@ -246,7 +246,7 @@ namespace WalkerSelbeeProgram7 {
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::Green;
-			this->ClientSize = System::Drawing::Size(566, 505);
+			this->ClientSize = System::Drawing::Size(533, 459);
 			this->Controls->Add(this->btnStand);
 			this->Controls->Add(this->btnHit);
 			this->Controls->Add(this->txtHeader);
