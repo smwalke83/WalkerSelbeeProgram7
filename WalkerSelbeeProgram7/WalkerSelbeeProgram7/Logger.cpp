@@ -93,12 +93,12 @@ void Logger::Time()
 // Log_11_12_2026_173045.txt
 void Logger::FileName()
 {
-	time_t now = time(nullptr); //time in seconds
-	tm localTime; // container for localtime_s
+	time_t now = time(nullptr); // https://en.cppreference.com/cpp/chrono/c/time_t
+	tm localTime; // https://en.cppreference.com/cpp/chrono/c/tm
 	localtime_s(&localTime, &now); // https://learn.microsoft.com/en-us/cpp/c-runtime-library/reference/localtime-s-localtime32-s-localtime64-s?view=msvc-170
 
 	stringstream ss; // init stringstream
-	ss << put_time(&localTime, "%m_%d_%Y_%H%M%S"); //put_time
+	ss << put_time(&localTime, "%m_%d_%Y_%H%M%S"); // https://en.cppreference.com/cpp/io/manip/put_time
 	dateTimeStamp = ss.str(); 
 
 	filename = "Log_" + dateTimeStamp + ".txt";
