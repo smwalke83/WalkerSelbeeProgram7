@@ -126,31 +126,36 @@ string Game::Tie()
 // Evaluates the hands to determine the result and calls the relevant method
 string Game::ShowResults()
 {
+    string result;
+
     // If the player busts, the dealer wins
     if (playerHand.Busted())
     {
-        return DealerWins();
+        result = DealerWins();
     }
     // If the player doesn't bust but the dealer does, the player wins
     else if (dealerHand.Busted())
     {
-        return PlayerWins();
+        result = PlayerWins();
     }
     // If nobody busts and the scores are equal, it's a tie
     else if (playerHand.BestScore() == dealerHand.BestScore())
     {
-        return Tie();
+        result = Tie();
     }
     // If nobody busts and the player has a higher score, the player wins
     else if (playerHand.BestScore() > dealerHand.BestScore())
     {
-        return PlayerWins();
+        result = PlayerWins();
     }
     // If nobody busts and the dealer has a higher score, the dealer wins
     else
     {
-        return DealerWins();
+        result = DealerWins();
     }
+
+    log.WriteLog(result);
+    return result;
 }
 
 // Creates a game summary and sends it to the logger. The instructions don't explicitly state what the summary should contain, so I just collected some basic data
@@ -165,7 +170,8 @@ void Game::EndGame()
     summary << "\r\nGames Tied: " << data.ties;
     summary << "\r\nGames Lost: " << data.losses;
     summary << "\r\nStarting Balance: $" << STARTINGBALANCE;
-    summary << "\r\nEnding Balance: $" << data.balance;\
-        // Closing the log and sending the summary as a string
-        log.CloseLog(summary.str());
+    summary << "\r\nEnding Balance: $" << data.balance;
+
+    // Closing the log and sending the summary as a string
+    log.CloseLog(summary.str());
 }

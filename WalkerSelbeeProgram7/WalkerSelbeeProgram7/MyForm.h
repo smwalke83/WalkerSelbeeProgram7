@@ -264,6 +264,7 @@ namespace WalkerSelbeeProgram7 {
 			this->MainMenuStrip = this->menuStrip1;
 			this->Name = L"MyForm";
 			this->Text = L"C++ Blackjack: SW/RS";
+			this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &MyForm::MyForm_FormClosing);
 			this->Load += gcnew System::EventHandler(this, &MyForm::MyForm_Load);
 			this->menuStrip1->ResumeLayout(false);
 			this->menuStrip1->PerformLayout();
@@ -276,8 +277,7 @@ namespace WalkerSelbeeProgram7 {
 		// -=>-=>-=> EVENT HANDLERS <=-<=-<=-
 		// -=> Lifecyle
 		// On Form Load
-		private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e)
-		{
+		private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
 			// Show the header text
 			txtHeader->Text = GetHeader();
 
@@ -292,7 +292,11 @@ namespace WalkerSelbeeProgram7 {
 			if (!game.IsLogOpened()) {
 				txtStatus->Text = "Unable to Create Log File.";
 			}
+		}
 
+		// On Form Closing
+		private: System::Void MyForm_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
+			game.EndGame();		
 		}
 
 		// -=> User Events
@@ -370,7 +374,6 @@ namespace WalkerSelbeeProgram7 {
 		private: System::Void menuRules_Click(System::Object^ sender, System::EventArgs^ e) {
 			MessageBox::Show(GetRules(), "Rules");
 		}
-
 
 		// -=>-=>-=> HELPERS <=-<=-<=-
 		// Accepts a c++ string and returns a .net string
