@@ -279,7 +279,7 @@ namespace WalkerSelbeeProgram7 {
 		// On Form Load
 		private: System::Void MyForm_Load(System::Object^ sender, System::EventArgs^ e) {
 			// Show the header text
-			txtHeader->Text = GetHeader();
+			txtHeader->Text = GetHeader(game.GetBalance());
 
 			// Hide the 'new game' button
 			btnNewGame->Visible = false;
@@ -387,15 +387,18 @@ namespace WalkerSelbeeProgram7 {
 			btnHit->Visible = false;
 			btnStand->Visible = false;
 			btnNewGame->Visible = true;
+			this->ActiveControl = nullptr;
+			txtHeader->Text = GetHeader(game.GetBalance());
+
 		}
 		
 		// Returns the Header String
-		String^ GetHeader()
+		String^ GetHeader(double balance)
 	    {
 			return
 				"C++ BlackJack!\r\n"
 				"Click 'Rules' To Learn how to play.\r\n"
-				"Starting Bankroll : $1000.00";
+				"Bankroll : $" + balance.ToString("F2");
 		}
 
 		// Returns the rules of the game for the Rules menu item
@@ -413,9 +416,9 @@ namespace WalkerSelbeeProgram7 {
 			   "HOW TO PLAY\n"
 			   "1. Enter a bet and press Place Bet.\n"
 			   "2. You and the dealer each get two cards. One dealer card is hidden.\n"
-			   "3. Press Hit to take another card, or Stay to keep your hand.\n"
+			   "3. Press Hit to take another card, or Stand to keep your hand.\n"
 			   "4. If you go over 21, you bust and lose your bet.\n"
-			   "5. When you stay, the dealer reveals the hidden card and must hit\n"
+			   "5. When you stand, the dealer reveals the hidden card and must hit\n"
 			   "    until reaching 17 or more.\n\n"
 
 			   "PAYOUTS\n"

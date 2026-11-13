@@ -43,6 +43,7 @@ public:
 	void ClearHands() { playerHand.ClearHand(); dealerHand.ClearHand(); }; // Resets the player and dealer hands
 	bool IsLogOpened() { return log.IsLogOpen(); } // Getter to determine if the log is open
 	void EndGame(); // Ends the game and sends a summary to the logger
+	double GetBalance() { return data.balance; };
 private:
 	Deck deck; // Object representing the card deck
 	Hand playerHand; // Object representing the player's hand
