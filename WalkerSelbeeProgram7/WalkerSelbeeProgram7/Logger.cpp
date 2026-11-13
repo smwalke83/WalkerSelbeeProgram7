@@ -18,14 +18,12 @@ using namespace std;
 // Constructors
 Logger::Logger(string name)
 {
-	// STUB: name is not used yet. The spec passes it in but never says what it's for.
-	// One option: if name is not empty, use it in the filename instead of "Log_".
-	(void)name;	// Silences the "unused parameter" warning
+	// I have no idea what the name attr is used for...
+	(void)name;	// Silence the "unused parameter" warning
 
-	// Build the filename from the current date and time
 	FileName();
 
-	// Create a new file (ios::out starts a fresh file)
+	// Create a new file
 	ofstream output(filename.c_str(), ios::out);
 	bLogOpen = output.is_open();
 
@@ -37,8 +35,6 @@ Logger::Logger(string name)
 		output.close();
 	}
 }
-
-// Public Methods
 
 // Writes the opening lines of the log, including the starting balance
 void Logger::StartLog(double initialBal)
@@ -76,46 +72,34 @@ void Logger::CloseLog(string s)
 	output << "Session ended: " << timeRightNow << endl;
 	output.close();
 
-	// Nothing else should be written after the summary
 	bLogOpen = false;
 }
 
 // Returns whether the log file was opened successfully
-bool Logger::IsLogOpen()
-{
-	return bLogOpen;
-}
+bool Logger::IsLogOpen() { return bLogOpen; }
 
-// ---------------------------------------------------------------
-// Private Methods
-// ---------------------------------------------------------------
-
-// Gets the current date/time as a readable string and stores it in timeRightNow
-// Example: 11/12/2026 05:30:45 PM
 void Logger::Time()
 {
-	time_t now = time(nullptr);		// Raw current time
+	time_t now = time(nullptr);		// current time
 	tm localTime;
-	localtime_s(&localTime, &now);	// Break it into fields (Microsoft version: tm first)
+	localtime_s(&localTime, &now);
 
 	stringstream ss;
 	ss << put_time(&localTime, "%m/%d/%Y %I:%M:%S %p");
 	timeRightNow = ss.str();
 }
 
-// Builds the log filename: Log_month_day_year_hhmmss.txt
-// Example: Log_11_12_2026_173045.txt
-// The time is included so two sessions on the same day don't overwrite each other.
-// No / or : allowed, since Windows doesn't allow them in file names.
+// Build filename:
+// Log_11_12_2026_173045.txt
 void Logger::FileName()
 {
-	time_t now = time(nullptr);
-	tm localTime;
-	localtime_s(&localTime, &now);
+	time_t now = time(nullptr); //time in seconds
+	tm localTime; // container for localtime_s
+	localtime_s(&localTime, &now); // https://learn.microsoft.com/en-us/cpp/c-runtime-library/reference/localtime-s-localtime32-s-localtime64-s?view=msvc-170
 
-	stringstream ss;
-	ss << put_time(&localTime, "%m_%d_%Y_%H%M%S");
-	dateTimeStamp = ss.str();
+	stringstream ss; // init stringstream
+	ss << put_time(&localTime, "%m_%d_%Y_%H%M%S"); //put_time
+	dateTimeStamp = ss.str(); 
 
 	filename = "Log_" + dateTimeStamp + ".txt";
 }
